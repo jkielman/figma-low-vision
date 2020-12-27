@@ -1,0 +1,38 @@
+.container {
+    width: 250px;
+    height: 260px;
+    padding: 8px;
+}
+
+
+.row {
+    display: flex;
+    list-style: none;
+
+    &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    
+      > *:not(:last-child) {
+        margin-right: 8px;
+      }
+}
+
+.input-container {
+    margin:8px 0 0;
+    width:124px;
+}
+
+
+.btn-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin:16px 0 0;
+    &__utilities {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width:144px;
+    }
+}

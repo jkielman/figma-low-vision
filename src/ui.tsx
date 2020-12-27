@@ -1,7 +1,5 @@
 import * as React from 'react';
+import * as ReactDom from 'react-dom';
 import { App } from './App';
 
-import 'react-figma/rpc';
-import { render } from 'react-figma';
-
-render(<App />);
+ReactDom.render(<App />, document.getElementById('app'));
