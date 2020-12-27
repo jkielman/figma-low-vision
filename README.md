@@ -1,2 +1,2 @@
 # figma-low-vision
-Test your UI for Visual Acuity and Field of vision problems
+A figma plugin to test your UI for Visual Acuity and Field of vision problems.
