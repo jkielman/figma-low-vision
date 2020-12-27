@@ -98,9 +98,9 @@ export const App = () => {
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <Label className="title" size="small" weight="medium">Acuity</Label>
-      <div className='row'>
+      <div className="row">
         <Checkbox
           className=""
           name="acuity"
@@ -123,7 +123,7 @@ export const App = () => {
           type="radio"
         />
       </div>
-      <div className='row'>
+      <div className="row">
         <Checkbox
           className=""
           name="acuity"
@@ -188,8 +188,8 @@ export const App = () => {
         </div>
       </div>
 
-      <div className='btn-container'>
-        <div className='btn-container__utilities'>
+      <div className="btn-container">
+        <div className="btn-container__utilities">
           <Button className="cancel" onClick={closeDialog} isSecondary>Cancel</Button>
           <Button className="apply" onClick={create}>Apply</Button>
         </div>
