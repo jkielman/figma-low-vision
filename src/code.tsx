@@ -48,53 +48,100 @@ if (currentNodes.length < 1) {
 
   figma.ui.onmessage = async (message) => {
 
+    //Mild
+    //Corner
 
-    console.log(message, ' message')
+    console.log(' message', message.type.acuity, message.type.vision)
 
-    if (message.type === 'Mild/Corner') {
+    const acuityProp = message.type.acuity;
+    const visionProp = message.type.vision;
+
+    // if (!(acuityProp && visionProp)) {
+
+    // }
+
+    const elName = `${message.type.acuity} / ${message.type.vision}`;
 
 
-      const values = message.values as { [key in string]: string }[];
 
-      values.forEach(async (texts, index) => {
-        const clone = selectedNode.clone() as GroupNode;
+    // console.log({ elName })
 
-        ///clone with blur
-        clone.effects = [{ type: 'LAYER_BLUR', radius: 6, visible: true }]
+    // if (elName === 'Mild / Corner') {
 
-        clone.x = 0
-        clone.y = 0
 
-        const canWidth = clone.width;
-        const canHeight = clone.height;
+    const values = message.values as { [key in string]: string }[];
 
-        const frame = figma.createFrame()
-        frame.resize(canWidth, canHeight)
-        frame.x = 0
-        frame.y = 0
-        frame.name = message.type
-        frame.clipsContent = false
-        const maskRect = figma.createRectangle()
-        frame.appendChild(maskRect)
-        maskRect.resize(canWidth, canHeight)
-        maskRect.x = 0
-        maskRect.y = 0
-        maskRect.isMask = true
-        const background1 = figma.createRectangle()
-        frame.appendChild(background1)
-        background1.x = 0
-        background1.y = 0
-        background1.resize(canWidth, canHeight)
-        background1.fills = [{ color: { r: 1, g: 1, b: 1 }, type: 'SOLID' }]
-        background1.effects = [{ type: 'DROP_SHADOW', visible: true, blendMode: "NORMAL", radius: 12, offset: { x: 0, y: 2 }, color: { r: 0, g: 0, b: 0, a: 0.16 } }]
-        frame.appendChild(clone)
-        const imageBackground = figma.createRectangle()
-        frame.appendChild(imageBackground)
-        imageBackground.x = 0
-        imageBackground.y = 0
-        imageBackground.resize(canWidth, canHeight)
-        imageBackground.fills = [
-          {
+    let blurStrength: number;
+    let visionArray = [];
+
+    values.forEach(async (texts, _index) => {
+
+      // Set acuity
+      switch (acuityProp) {
+        case 'Normal':
+          blurStrength = 0
+          break;
+        case 'Mild':
+          blurStrength = 25
+          break;
+        case 'Medium':
+          blurStrength = 25
+          break;
+        case 'Severe':
+          blurStrength = 75
+      }
+
+      const clone = selectedNode.clone() as GroupNode;
+
+      //Added blur
+      clone.effects = [{ type: 'LAYER_BLUR', radius: blurStrength, visible: true }]
+
+      //Position
+      clone.x = 0
+      clone.y = 0
+
+      //Get width and height
+      const canWidth = clone.width;
+      const canHeight = clone.height;
+
+      const frame = figma.createFrame()
+      frame.resize(canWidth, canHeight)
+      frame.x = 0
+      frame.y = 0
+      frame.name = elName
+      frame.clipsContent = false
+
+      //Create mask
+      const maskRect = figma.createRectangle()
+      frame.appendChild(maskRect)
+      maskRect.resize(canWidth, canHeight)
+      maskRect.x = 0
+      maskRect.y = 0
+      maskRect.isMask = true
+
+      //Creat frame dropshadow
+      const background1 = figma.createRectangle()
+      frame.appendChild(background1)
+      background1.x = 0
+      background1.y = 0
+      background1.resize(canWidth, canHeight)
+      background1.fills = [{ color: { r: 1, g: 1, b: 1 }, type: 'SOLID' }]
+      background1.effects = [{ type: 'DROP_SHADOW', visible: true, blendMode: "NORMAL", radius: 12, offset: { x: 0, y: 2 }, color: { r: 0, g: 0, b: 0, a: 0.16 } }]
+
+      frame.appendChild(clone)
+
+
+      const imageBackground = figma.createRectangle()
+      frame.appendChild(imageBackground)
+      imageBackground.x = 0
+      imageBackground.y = 0
+      imageBackground.resize(canWidth, canHeight)
+
+
+      // Set acuity
+      switch (visionProp) {
+        case 'Standard':
+          visionArray.push({
             type: "GRADIENT_LINEAR",
             visible: true,
             opacity: 1,
@@ -107,41 +154,96 @@ if (currentNodes.length < 1) {
               [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
               [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
             ]
-          }
-        ]
+          })
+          break;
+        case 'Central':
+          visionArray.push({
+            type: "GRADIENT_LINEAR",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            gradientStops: [
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+            ],
+            gradientTransform: [
+              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
+              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+            ]
+          })
+          break;
+        case 'Standard':
+          visionArray.push({
+            type: "GRADIENT_LINEAR",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            gradientStops: [
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+            ],
+            gradientTransform: [
+              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
+              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+            ]
+          })
+          break;
+        case 'Central':
+          visionArray.push({
+            type: "GRADIENT_LINEAR",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            gradientStops: [
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+            ],
+            gradientTransform: [
+              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
+              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+            ]
+          })
+      }
+
+      //Set up visionProp
+      imageBackground.fills = visionArray;
+
+      console.log('visionArray: ', visionArray)
 
 
-        console.log({ clone });
+      console.log({ clone });
 
 
-        const map = createIdMap(
-          selectedNode as GroupNode,
-          clone,
-        );
+      const map = createIdMap(
+        selectedNode as GroupNode,
+        clone,
+      );
 
-        Object.keys(texts).forEach(async (key) => {
-          const textNode = clone.findOne((node) => {
-            return node.id === map[key];
+      Object.keys(texts).forEach(async (key) => {
+        const textNode = clone.findOne((node) => {
+          return node.id === map[key];
 
-          }) as TextNode;
-          textNode
-          if (textNode) {
-            await figma.loadFontAsync(textNode.fontName as FontName);
-            textNode.characters = texts[key];
-            console.log(textNode, ' textNode 2')
-          }
-        });
-
+        }) as TextNode;
+        textNode
+        if (textNode) {
+          await figma.loadFontAsync(textNode.fontName as FontName);
+          textNode.characters = texts[key];
+          console.log(textNode, ' textNode 2')
+        }
       });
 
-      figma.closePlugin();
-    }
+    });
 
-    if (message.type === 'Cancel') {
+    figma.closePlugin();
+    // }
 
-      figma.closePlugin();
 
-    }
+    // if (message.type === 'Cancel') {
+
+    //   figma.closePlugin();
+
+    // }
+
 
   };
 

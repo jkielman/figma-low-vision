@@ -140,7 +140,7 @@ export const App = () => {
           label="Severe"
           value="Severe"
           onChange={el => {
-            selected.acuity = 'Medium';
+            selected.acuity = 'Severe';
           }}
           type="radio"
         />
