@@ -51,6 +51,11 @@ if (currentNodes.length < 1) {
     //Mild
     //Corner
 
+    if (message.type === 'Cancel') {
+      figma.closePlugin();
+      return;
+    }
+
     console.log(' message', message.type.acuity, message.type.vision)
 
     const acuityProp = message.type.acuity;
@@ -141,20 +146,7 @@ if (currentNodes.length < 1) {
       // Set acuity
       switch (visionProp) {
         case 'Standard':
-          visionArray.push({
-            type: "GRADIENT_LINEAR",
-            visible: true,
-            opacity: 1,
-            blendMode: "NORMAL",
-            gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
-            ],
-            gradientTransform: [
-              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
-              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
-            ]
-          })
+          null
           break;
         case 'Central':
           visionArray.push({
@@ -171,8 +163,26 @@ if (currentNodes.length < 1) {
               [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
             ]
           })
+          console.log('Central', true)
           break;
-        case 'Standard':
+        case 'Peripheral':
+          visionArray.push({
+            type: "GRADIENT_RADIAL",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            gradientStops: [
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0 },
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0.5865827798843384 }
+            ],
+            gradientTransform: [
+              [1.3214370930825226e-8, 0.8378099203109741, 0.08161155134439468],
+              [-0.5590909719467163, 2.2865739524036144e-8, 0.7795454859733582]
+            ]
+          })
+          console.log('Peripheral', true)
+          break;
+        case 'Corner':
           visionArray.push({
             type: "GRADIENT_LINEAR",
             visible: true,
@@ -187,8 +197,9 @@ if (currentNodes.length < 1) {
               [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
             ]
           })
+          console.log('Corner', true)
           break;
-        case 'Central':
+        case 'Spots':
           visionArray.push({
             type: "GRADIENT_LINEAR",
             visible: true,
@@ -203,6 +214,24 @@ if (currentNodes.length < 1) {
               [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
             ]
           })
+          console.log('Spots', true)
+          break
+        case 'Side':
+          visionArray.push({
+            type: "GRADIENT_LINEAR",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            gradientStops: [
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+            ],
+            gradientTransform: [
+              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
+              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+            ]
+          })
+          console.log('Side', true)
       }
 
       //Set up visionProp
@@ -235,15 +264,6 @@ if (currentNodes.length < 1) {
     });
 
     figma.closePlugin();
-    // }
-
-
-    // if (message.type === 'Cancel') {
-
-    //   figma.closePlugin();
-
-    // }
-
 
   };
 
