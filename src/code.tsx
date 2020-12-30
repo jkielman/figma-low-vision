@@ -60,19 +60,7 @@ if (currentNodes.length < 1) {
 
     const acuityProp = message.type.acuity;
     const visionProp = message.type.vision;
-
-    // if (!(acuityProp && visionProp)) {
-
-    // }
-
-    const elName = `${message.type.acuity} / ${message.type.vision}`;
-
-
-
-    // console.log({ elName })
-
-    // if (elName === 'Mild / Corner') {
-
+    const elName = `A: ${message.type.acuity} / FOV: ${message.type.vision}`;
 
     const values = message.values as { [key in string]: string }[];
 
@@ -111,10 +99,10 @@ if (currentNodes.length < 1) {
 
       const frame = figma.createFrame()
       frame.resize(canWidth, canHeight)
-      frame.x = 0
+      frame.x = frame.x + canWidth + 100
       frame.y = 0
       frame.name = elName
-      frame.clipsContent = false
+      frame.clipsContent = true
 
       //Create mask
       const maskRect = figma.createRectangle()
@@ -150,17 +138,18 @@ if (currentNodes.length < 1) {
           break;
         case 'Central':
           visionArray.push({
-            type: "GRADIENT_LINEAR",
+            type: "GRADIENT_RADIAL",
             visible: true,
             opacity: 1,
             blendMode: "NORMAL",
             gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+              { color: { r: 0, g: 0, b: 0, a: 0.9599999785423279 }, position: 0 },
+              { color: { r: 0.7686274647712708, g: 0.7686274647712708, b: 0.7686274647712708, a: 0.3499999940395355 }, position: 0.546875 },
+              { color: { r: 0.7686274647712708, g: 0.7686274647712708, b: 0.7686274647712708, a: 0 }, position: 1 },
             ],
             gradientTransform: [
-              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
-              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+              [6.937503460591188e-9, 0.5502035617828369, 0.2252374142408371],
+              [-0.3671642541885376, 1.1389261977967635e-8, 0.6835821270942688]
             ]
           })
           console.log('Central', true)
@@ -201,17 +190,15 @@ if (currentNodes.length < 1) {
           break;
         case 'Spots':
           visionArray.push({
-            type: "GRADIENT_LINEAR",
+            type: "IMAGE",
+            scaleMode: "FILL",
             visible: true,
             opacity: 1,
-            blendMode: "NORMAL",
-            gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
-            ],
-            gradientTransform: [
-              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
-              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+            scalingFactor: 1,
+            imageHash: "abcb2bf8a97ac3894ebd46bd72abede756dcf545",
+            imageTransform: [
+              [1, 0, 0],
+              [0, 0.5054665803909302, 0.2472667098045349]
             ]
           })
           console.log('Spots', true)
@@ -223,12 +210,12 @@ if (currentNodes.length < 1) {
             opacity: 1,
             blendMode: "NORMAL",
             gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0.1041666641831398 },
+              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.8072916865348816 }
             ],
             gradientTransform: [
-              [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
-              [-1.016112208366394, 1.2574687004089355, 0.2586434781551361]
+              [-1.024999976158142, 5.902742472585487e-8, 0.8604166507720947],
+              [-1.573754637718139e-8, -1.8585418462753296, 1.4304168224334717]
             ]
           })
           console.log('Side', true)

@@ -28,6 +28,7 @@ function initialize(
   newLength: number,
   originalVals: ComponentItemType[]
 ) {
+
   const copy = [...current];
 
   console.log('current:', current, 'newLength:', newLength, 'originalValues:', originalVals)
@@ -148,8 +149,8 @@ export const App = () => {
 
       <Label className="title" size="small" weight="medium">Field of vision</Label>
 
-      <div className='row'>
-        <div className='input-container'>
+      <div className="row">
+        <div className="input-container">
           <Select
             className="select-box"
             defaultValue=""
