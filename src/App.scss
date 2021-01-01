@@ -1,6 +1,6 @@
 .container {
     width: 250px;
-    height: 260px;
+    height: 276px;
     padding: 8px;
 }
 
@@ -8,14 +8,10 @@
 .row {
     display: flex;
     list-style: none;
+}
 
-    &:not(:last-child) {
-        margin-bottom: 8px;
-      }
-    
-      > *:not(:last-child) {
-        margin-right: 8px;
-      }
+.col {
+    width: 50%;
 }
 
 .input-container {
@@ -28,7 +24,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    margin:16px 0 0;
+    margin:24px 0 0;
     &__utilities {
         display: flex;
         align-items: flex-end;
@@ -36,3 +32,14 @@
         width:144px;
     }
 }
+
+.title {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 11px;
+    color: #888787;
+    letter-spacing: 0.2px;
+    line-height: 12px;
+}
+
+

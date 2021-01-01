@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Checkbox, Button, Label, Select } from "react-figma-plugin-ds";
+import { Checkbox, Button, Title, Label, Select } from "react-figma-plugin-ds";
 import "react-figma-plugin-ds/figma-plugin-ds.css";
 import './App.scss';
 
@@ -100,55 +100,14 @@ export const App = () => {
 
   return (
     <div className="container">
-      <Label className="title" size="small" weight="medium">Acuity</Label>
-      <div className="row">
-        <Checkbox
-          className=""
-          name="acuity"
-          label="Normal"
-          value="Normal"
-          onChange={el => {
-            selected.acuity = 'Normal';
-          }}
-          type="radio"
-        />
-        <Checkbox
-          className=""
-          name="acuity"
-          label="Mild"
-          value="Mild"
-          //+2.00D
-          onChange={el => {
-            selected.acuity = 'Mild';
-          }}
-          type="radio"
-        />
-      </div>
-      <div className="row">
-        <Checkbox
-          className=""
-          name="acuity"
-          label="Medium"
-          value="Medium"
-          onChange={el => {
-            selected.acuity = 'Medium';
-          }}
-          type="radio"
-        />
-        <Checkbox
-          className=""
-          name="acuity"
-          label="Severe"
-          value="Severe"
-          onChange={el => {
-            selected.acuity = 'Severe';
-          }}
-          type="radio"
-        />
-      </div>
-
-      <Label className="title" size="small" weight="medium">Field of vision</Label>
-
+      <Title
+        className="title"
+        level="h2"
+        size="small"
+        weight="bold"
+      >
+        Field of vision
+      </Title>
       <div className="row">
         <div className="input-container">
           <Select
@@ -168,27 +127,91 @@ export const App = () => {
                 value: 2
               },
               {
-                label: 'Peripheral',
+                label: 'Side',
                 value: 3
               },
               {
-                label: 'Corner',
+                label: 'Peripheral',
                 value: 4
               },
               {
-                label: 'Spots',
+                label: 'Corner',
                 value: 5
               },
               {
-                label: 'Side',
+                label: 'Albinism',
                 value: 6
+              },
+              {
+                label: 'Blind spots',
+                value: 7
               }
             ]}
             placeholder="Standard"
           />
         </div>
       </div>
-
+      <Title
+        className="title"
+        level="h2"
+        size="small"
+        weight="bold"
+      >
+        Acuity
+      </Title>
+      <div className="row">
+        <div className="col">
+          <Checkbox
+            className=""
+            name="acuity"
+            label="Normal"
+            value="Normal"
+            onChange={el => {
+              selected.acuity = 'Normal';
+            }}
+            type="radio"
+          />
+        </div>
+        <div className="col">
+          <Checkbox
+            className=""
+            name="acuity"
+            label="Mild"
+            value="Mild"
+            //+2.00D
+            onChange={el => {
+              selected.acuity = 'Mild';
+            }}
+            type="radio"
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <Checkbox
+            className=""
+            name="acuity"
+            label="Medium"
+            value="Medium"
+            onChange={el => {
+              selected.acuity = 'Medium';
+            }}
+            type="radio"
+          />
+        </div>
+        <div className="col">
+          <Checkbox
+            className=""
+            name="acuity"
+            label="Severe"
+            value="Severe"
+            onChange={el => {
+              selected.acuity = 'Severe';
+            }}
+            type="radio"
+          />
+        </div>
+      </div>
       <div className="btn-container">
         <div className="btn-container__utilities">
           <Button className="cancel" onClick={closeDialog} isSecondary>Cancel</Button>

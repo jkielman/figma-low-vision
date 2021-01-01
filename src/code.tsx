@@ -1,6 +1,6 @@
 figma.showUI(__html__, {
   width: 250,
-  height: 260,
+  height: 276,
 });
 
 const currentNodes = figma.currentPage.selection;
@@ -48,15 +48,10 @@ if (currentNodes.length < 1) {
 
   figma.ui.onmessage = async (message) => {
 
-    //Mild
-    //Corner
-
     if (message.type === 'Cancel') {
       figma.closePlugin();
       return;
     }
-
-    console.log(' message', message.type.acuity, message.type.vision)
 
     const acuityProp = message.type.acuity;
     const visionProp = message.type.vision;
@@ -86,6 +81,7 @@ if (currentNodes.length < 1) {
 
       const clone = selectedNode.clone() as GroupNode;
 
+
       //Added blur
       clone.effects = [{ type: 'LAYER_BLUR', radius: blurStrength, visible: true }]
 
@@ -103,24 +99,6 @@ if (currentNodes.length < 1) {
       frame.y = 0
       frame.name = elName
       frame.clipsContent = true
-
-      //Create mask
-      const maskRect = figma.createRectangle()
-      frame.appendChild(maskRect)
-      maskRect.resize(canWidth, canHeight)
-      maskRect.x = 0
-      maskRect.y = 0
-      maskRect.isMask = true
-
-      //Creat frame dropshadow
-      const background1 = figma.createRectangle()
-      frame.appendChild(background1)
-      background1.x = 0
-      background1.y = 0
-      background1.resize(canWidth, canHeight)
-      background1.fills = [{ color: { r: 1, g: 1, b: 1 }, type: 'SOLID' }]
-      background1.effects = [{ type: 'DROP_SHADOW', visible: true, blendMode: "NORMAL", radius: 12, offset: { x: 0, y: 2 }, color: { r: 0, g: 0, b: 0, a: 0.16 } }]
-
       frame.appendChild(clone)
 
 
@@ -188,7 +166,19 @@ if (currentNodes.length < 1) {
           })
           console.log('Corner', true)
           break;
-        case 'Spots':
+        case 'Albinism':
+          visionArray.push({
+            type: "SOLID",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            color: { r: 1, g: 1, b: 1 }//white
+          })
+          imageBackground.opacity = 0.95
+          imageBackground.blendMode = "SOFT_LIGHT"
+          console.log('Albinism', true)
+          break
+        case 'Blind spots':
           visionArray.push({
             type: "IMAGE",
             scaleMode: "FILL",
