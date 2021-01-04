@@ -123,23 +123,23 @@ export const App = () => {
                 value: 1
               },
               {
-                label: 'Central',
+                label: 'Central loss',
                 value: 2
               },
               {
-                label: 'Side',
+                label: 'Hemianopia',
                 value: 3
               },
               {
-                label: 'Peripheral',
+                label: 'Peripheral loss',
                 value: 4
               },
               {
-                label: 'Corner',
+                label: 'Retinal detachment',
                 value: 5
               },
               {
-                label: 'Albinism',
+                label: 'Ocular albinism',
                 value: 6
               },
               {
