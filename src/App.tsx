@@ -157,7 +157,7 @@ export const App = () => {
         size="small"
         weight="bold"
       >
-        Acuity
+        Visual Acuity
       </Title>
       <div className="row">
         <div className="col">

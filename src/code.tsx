@@ -191,13 +191,13 @@ if (currentNodes.length < 1) {
           imageBackground.blendMode = "SOFT_LIGHT"
           break
         case 'Blind spots':
-          // One spot
-          const createShape = figma.createVector();
-          frame.appendChild(createShape)
-          createShape.x = 24
-          createShape.y = 24
-          createShape.resize(170, 116)
-          createShape.vectorNetwork = {
+          // Spot 1
+          const createShape1 = figma.createVector();
+          frame.appendChild(createShape1)
+          createShape1.x = 24
+          createShape1.y = 24
+          createShape1.resize(170, 116)
+          createShape1.vectorNetwork = {
             regions: [],
             vertices: [
               { x: 23.518829345703125, y: 62.609947204589844, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
@@ -220,15 +220,63 @@ if (currentNodes.length < 1) {
               { start: 7, end: 0, tangentStart: { x: -27.200000762939453, y: 29.599998474121094 }, tangentEnd: { x: -14.00001049041748, y: 3.178914482759865e-7 } }
             ],
           }
-          createShape.vectorPaths = [{ windingRule: "NONE", data: "M 23.518829345703125 62.609947204589844 C 9.85216236114502 68.9432806968689 -12.281169891357422 86.00994682312012 8.518829345703125 103.60994720458984 C 29.318828582763672 121.20994758605957 52.51880931854248 117.60994720458984 61.518798828125 113.60994720458984 C 67.518798828125 114.27661389112473 80.11879873275757 113.20994758605957 82.518798828125 103.60994720458984 C 85.518798828125 91.60994720458984 110.518798828125 69.60994720458984 133.518798828125 62.609947204589844 C 156.518798828125 55.609947204589844 197.518798828125 3.6099700927734375 146.518798828125 4.6099700927734375 C 105.71879959106445 5.4099701046943665 108.518798828125 32.60992431640625 71.518798828125 12.609947204589844 C 34.518798828125 -7.3900299072265625 42.71879959106445 -3.9900455474853516 15.518798828125 25.609952926635742 C -11.681201934814453 55.209951400756836 9.518818855285645 62.60994752248129 23.518829345703125 62.609947204589844 Z" }]
-          createShape.fills = [{
+          createShape1.vectorPaths = [{ windingRule: "NONE", data: "M 23.518829345703125 62.609947204589844 C 9.85216236114502 68.9432806968689 -12.281169891357422 86.00994682312012 8.518829345703125 103.60994720458984 C 29.318828582763672 121.20994758605957 52.51880931854248 117.60994720458984 61.518798828125 113.60994720458984 C 67.518798828125 114.27661389112473 80.11879873275757 113.20994758605957 82.518798828125 103.60994720458984 C 85.518798828125 91.60994720458984 110.518798828125 69.60994720458984 133.518798828125 62.609947204589844 C 156.518798828125 55.609947204589844 197.518798828125 3.6099700927734375 146.518798828125 4.6099700927734375 C 105.71879959106445 5.4099701046943665 108.518798828125 32.60992431640625 71.518798828125 12.609947204589844 C 34.518798828125 -7.3900299072265625 42.71879959106445 -3.9900455474853516 15.518798828125 25.609952926635742 C -11.681201934814453 55.209951400756836 9.518818855285645 62.60994752248129 23.518829345703125 62.609947204589844 Z" }]
+          createShape1.fills = [{
             type: "SOLID",
             visible: true,
             opacity: 1,
             blendMode: "NORMAL",
             color: { r: 0, g: 0, b: 0 }
           }]
-          createShape.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
+          createShape1.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
+
+          // Spot 2
+          const createShape2 = figma.createVector();
+          frame.appendChild(createShape2)
+          createShape2.x = canWidth - 134
+          createShape2.y = 16
+          createShape2.resize(134, 212)
+          createShape2.vectorNetwork = {
+            regions: [],
+            vertices: [
+              { x: 134, y: 19.859512329101562, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 61.74312973022461, y: 129.12649536132812, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 0, y: 67.4930191040039, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 61.74312973022461, y: 5.859576225280762, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 134, y: 191.85968017578125, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+            ],
+            segments: [
+              { start: 1, end: 2, tangentStart: { x: -34.099788665771484, y: 0 }, tangentEnd: { x: 0, y: 34.03921127319336 } },
+              { start: 2, end: 3, tangentStart: { x: 0, y: -34.03921127319336 }, tangentEnd: { x: -34.099788665771484, y: 0 } },
+              { start: 3, end: 0, tangentStart: { x: 34.099788665771484, y: 0 }, tangentEnd: { x: 0, y: -34.03921127319336 } },
+              { start: 0, end: 4, tangentStart: { x: 0, y: 19.432538986206055 }, tangentEnd: { x: 0, y: -38 } },
+              { start: 4, end: 1, tangentStart: { x: 0, y: 67.86380004882812 }, tangentEnd: { x: 14.632665634155273, y: 0 } },
+            ],
+          }
+          createShape2.vectorPaths = [{ windingRule: "NONE", data: 'M 134 19.859512329101562 C 134 39.29205131530762 134 153.85968017578125 134 191.85968017578125 C 134 259.7234802246094 76.37579536437988 129.12649536132812 61.74312973022461 129.12649536132812 C 27.643341064453125 129.12649536132812 0 101.53223037719727 0 67.4930191040039 C 0 33.45380783081055 27.643341064453125 5.859576225280762 61.74312973022461 5.859576225280762 C 95.8429183959961 5.859576225280762 134 -14.179698944091797 134 19.859512329101562 Z' }]
+          createShape2.fills = [{
+            type: "SOLID",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            color: { r: 0, g: 0, b: 0 }
+          }]
+          createShape2.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
 
       imageBackground.fills = visionArray;
