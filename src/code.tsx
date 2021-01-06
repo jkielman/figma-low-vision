@@ -263,16 +263,68 @@ if (currentNodes.length < 1) {
           }]
           createShape2.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
 
+          const createShape3 = figma.createVector();
+          frame.appendChild(createShape3)
+          createShape3.x = canWidth / 2
+          createShape3.y = canHeight / 2
+          createShape3.resize(237, 212)
+          createShape3.vectorNetwork = {
+            regions: [],
+            vertices: [
+              { x: 27.970772800780363, y: 45.88615773396826, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 27.970772800780363, y: 139.22358905549726, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 136.52306674703388, y: 45.88615773396826, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 91.29291311649125, y: 0.7228874721137855, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+            ],
+            segments: [
+              { start: 0, end: 1, tangentStart: { x: -21.107405027586562, y: 27.097962264790315 }, tangentEnd: { x: -50.65776976568317, y: -9.6348311710511 } },
+              { start: 1, end: 2, tangentStart: { x: 63.32221508275969, y: 12.04353878435125 }, tangentEnd: { x: -6.030687150739018, y: 54.19592452958063 } },
+              { start: 2, end: 3, tangentStart: { x: 4.824549792482608, y: -43.35673847510314 }, tangentEnd: { x: 17.08694644781793, y: -3.0108846960878126 } },
+              { start: 3, end: 0, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+            ],
+          }
+          createShape3.vectorPaths = [{ windingRule: "NONE", data: 'M 27.970772800780363 45.88615773396826 C 6.863367773193801 72.98411999875857 -22.686996964902807 129.5887578844461 27.970772800780363 139.22358905549726 C 91.29298788354005 151.2671278398485 130.49237959629485 100.0820822635489 136.52306674703388 45.88615773396826 C 141.34761653951648 2.5294192588651185 108.37985956430919 -2.287997223974027 91.29291311649125 0.7228874721137855 L 27.970772800780363 45.88615773396826 Z' }]
+          createShape3.fills = [{
+            type: "SOLID",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            color: { r: 0, g: 0, b: 0 }
+          }]
+          createShape3.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
 
 
-
-
-
-
-
-
-
-
+          const createShape4 = figma.createVector();
+          frame.appendChild(createShape4)
+          createShape4.x = - 40
+          createShape4.y = canHeight - 200
+          createShape4.resize(226, 254)
+          createShape4.vectorNetwork = {
+            regions: [],
+            vertices: [
+              { x: 39.69117131340952, y: 95.7215995307603, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 190.0658583030122, y: 78.45801136563985, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 190.0658583030122, y: 246.1614076716958, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 22.435056261564426, y: 226.43159800179032, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 10.109261475217066, y: 159.84349036585942, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+            ],
+            segments: [
+              { start: 0, end: 1, tangentStart: { x: 23.00814948419548, y: -68.23225687377197 }, tangentEnd: { x: -65.08019553153055, y: -149.9465516097002 } },
+              { start: 1, end: 2, tangentStart: { x: 65.08019553153055, y: 149.9465516097002 }, tangentEnd: { x: 27.116748529964195, y: 6.576598715346681 } },
+              { start: 2, end: 3, tangentStart: { x: -41.90770227358103, y: 9.042829628038051 }, tangentEnd: { x: 33.526162759248336, y: 37.48663790242505 } },
+              { start: 3, end: 4, tangentStart: { x: -33.526162759248336, y: -37.48663790242505 }, tangentEnd: { x: -9.86063582907789, y: 6.576603419299868 } },
+              { start: 4, end: 0, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+            ],
+          }
+          createShape4.vectorPaths = [{ windingRule: "NONE", data: 'M 39.69117131340952 95.7215995307603 C 62.699320797605 27.489342656988327 124.98566277148164 -71.48854024406036 190.0658583030122 78.45801136563985 C 255.14605383454273 228.40456297534007 217.18260683297638 252.73800638704247 190.0658583030122 246.1614076716958 C 148.15815602943115 255.20423729973385 55.96121902081276 263.91823590421535 22.435056261564426 226.43159800179032 C -11.09110649768391 188.94496009936526 0.24862564613917648 166.42009378515928 10.109261475217066 159.84349036585942 L 39.69117131340952 95.7215995307603 Z' }]
+          createShape4.fills = [{
+            type: "SOLID",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            color: { r: 0, g: 0, b: 0 }
+          }]
+          createShape4.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
 
 
 
