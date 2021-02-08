@@ -3,7 +3,13 @@ figma.showUI(__html__, {
   height: 276,
 });
 
+//colours
+
+const black = { r: 0, g: 0, b: 0, a: 1 };
+const opaque = { r: 0, g: 0, b: 0, a: 0 };
+
 const currentNodes = figma.currentPage.selection;
+const currentNode = figma.currentPage.selection[0];
 
 if (currentNodes.length < 1) {
 
@@ -55,7 +61,7 @@ if (currentNodes.length < 1) {
 
     const acuityProp = message.type.acuity;
     const visionProp = message.type.vision;
-    const elName = `A: ${message.type.acuity} / FOV: ${message.type.vision}`;
+    const elName = `FOV: ${message.type.vision} / VA: ${message.type.acuity}`;
 
     const values = message.values as { [key in string]: string }[];
 
@@ -70,14 +76,15 @@ if (currentNodes.length < 1) {
           blurStrength = 0
           break;
         case 'Mild':
-          blurStrength = 16.7
+          blurStrength = 11
           break;
         case 'Medium':
-          blurStrength = 33.4
+          blurStrength = 22
           break;
         case 'Severe':
-          blurStrength = 50
+          blurStrength = 33
       }
+
 
       const clone = selectedNode.clone() as GroupNode;
 
@@ -85,28 +92,28 @@ if (currentNodes.length < 1) {
       //Added blur
       clone.effects = [{ type: 'LAYER_BLUR', radius: blurStrength, visible: true }]
 
-      //Position
-      clone.x = 0
-      clone.y = 0
-
       //Get width and height
       const canWidth = clone.width;
       const canHeight = clone.height;
 
       const frame = figma.createFrame()
       frame.resize(canWidth, canHeight)
-      frame.x = frame.x + canWidth + 100
-      frame.y = 0
+      frame.x = currentNode.x + canWidth + 24
+      frame.y = currentNode.y
       frame.name = elName
       frame.clipsContent = true
       frame.appendChild(clone)
 
+      //Position
+      clone.x = 0
+      clone.y = 0
 
-      const imageBackground = figma.createRectangle()
-      frame.appendChild(imageBackground)
-      imageBackground.x = 0
-      imageBackground.y = 0
-      imageBackground.resize(canWidth, canHeight)
+
+      const uiBackground = figma.createRectangle()
+      frame.appendChild(uiBackground)
+      uiBackground.x = 0
+      uiBackground.y = 0
+      uiBackground.resize(canWidth, canHeight)
 
       // Set acuity
 
@@ -138,8 +145,8 @@ if (currentNodes.length < 1) {
             opacity: 1,
             blendMode: "NORMAL",
             gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0.1041666641831398 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.8072916865348816 }
+              { color: black, position: 0.1041666641831398 },
+              { color: opaque, position: 0.8072916865348816 }
             ],
             gradientTransform: [
               [-1.024999976158142, 5.902742472585487e-8, 0.8604166507720947],
@@ -154,8 +161,8 @@ if (currentNodes.length < 1) {
             opacity: 1,
             blendMode: "NORMAL",
             gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0.5865827798843384 }
+              { color: opaque, position: 0 },
+              { color: black, position: 0.5865827798843384 }
             ],
             gradientTransform: [
               [1.3214370930825226e-8, 0.8378099203109741, 0.08161155134439468],
@@ -170,8 +177,8 @@ if (currentNodes.length < 1) {
             opacity: 1,
             blendMode: "NORMAL",
             gradientStops: [
-              { color: { r: 0, g: 0, b: 0, a: 1 }, position: 0 },
-              { color: { r: 0, g: 0, b: 0, a: 0 }, position: 0.7708333134651184 }
+              { color: black, position: 0 },
+              { color: opaque, position: 0.7708333134651184 }
             ],
             gradientTransform: [
               [0.6813358068466187, 1.0038857460021973, -0.6852215528488159],
@@ -187,8 +194,8 @@ if (currentNodes.length < 1) {
             blendMode: "NORMAL",
             color: { r: 1, g: 1, b: 1 }
           })
-          imageBackground.opacity = 0.95
-          imageBackground.blendMode = "SOFT_LIGHT"
+          uiBackground.opacity = 0.95
+          uiBackground.blendMode = "SOFT_LIGHT"
           break
         case 'Blind spots':
           // Spot 1
@@ -326,14 +333,40 @@ if (currentNodes.length < 1) {
           }]
           createShape4.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
 
-
-
-
+          const createShape5 = figma.createVector();
+          frame.appendChild(createShape5)
+          createShape5.x = canWidth - 240
+          createShape5.y = canHeight - 452
+          createShape5.resize(272, 452)
+          createShape5.vectorNetwork = {
+            regions: [],
+            vertices: [
+              { x: 130.10098266601562, y: 234.0443115234375, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 272, y: 101.94988250732422, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 0, y: 452, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 272, y: 452, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+              { x: 130.10098266601562, y: 452, strokeCap: "NONE", strokeJoin: "MITER", cornerRadius: 0 },
+            ],
+            segments: [
+              { start: 0, end: 1, tangentStart: { x: 26.967418670654297, y: -112.6636962890625 }, tangentEnd: { x: -76.27926635742188, y: -247.58865356445312 } },
+              { start: 2, end: 0, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+              { start: 1, end: 3, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+              { start: 3, end: 4, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+              { start: 2, end: 4, tangentStart: { x: 0, y: 0 }, tangentEnd: { x: 0, y: 0 } },
+            ],
+          }
+          createShape5.vectorPaths = [{ windingRule: "NONE", data: 'M 130.10098266601562 234.0443115234375 C 157.06840133666992 121.380615234375 195.72073364257812 -145.6387710571289 272 101.94988250732422 L 272 452 L 130.10098266601562 452 L 0 452 L 130.10098266601562 234.0443115234375 Z' }]
+          createShape5.fills = [{
+            type: "SOLID",
+            visible: true,
+            opacity: 1,
+            blendMode: "NORMAL",
+            color: { r: 0, g: 0, b: 0 }
+          }]
+          createShape5.effects = [{ type: 'LAYER_BLUR', radius: 50, visible: true }]
       }
 
-      imageBackground.fills = visionArray;
-
-      console.log('visionArray: ', visionArray)
+      uiBackground.fills = visionArray;
 
       const map = createIdMap(
         selectedNode as GroupNode,

@@ -1,6 +1,6 @@
 {
-  "name": "Figma Low Vision",
-  "id": "8745995778738837862",
+  "name": "Low Vision",
+  "id": "940423402083252469",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/ui.html"

@@ -31,8 +31,6 @@ function initialize(
 
   const copy = [...current];
 
-  console.log('current:', current, 'newLength:', newLength, 'originalValues:', originalVals)
-
   if (current.length < newLength) {
 
     const defaultVal = constructFromOriginal(originalVals);
@@ -79,7 +77,6 @@ export const App = () => {
 
   //Send message to code.apsx - Clone and send Acuity and Vision properties
   const create = () => {
-    console.log(messageSet, ' messageSet')
     // const loVisProps = `${messageSet.acuity}/${messageSet.vision}`
     //'Mild/Corner'
     parent.postMessage(
@@ -157,7 +154,7 @@ export const App = () => {
         size="small"
         weight="bold"
       >
-        Visual Acuity
+        Visual acuity
       </Title>
       <div className="row">
         <div className="col">
